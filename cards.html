@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .outer-box {
+            background-color:  #fbf4fd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        
+        }   
+        .inner-box {
+            background-color: #fbf4fd;
+            padding: 20px;
+            border-radius: 8px;
+
+        }
+        .cards-containers {
+            background-color: #fbf4fd;
+            display: grid;
+            font-family: Arial, sans-serif;
+            align-items: flex-start;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-rows:repeat(auto-fill, minmax(100px, 1fr));
+            gap: 16px;
+            display: flex;
+
+            
+        }
+        .movie-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 16px;
+            width: 200px;
+            display: block;
+            overflow: hidden;
+            transition: scale 0.3s;
+            animation: cardAnimation 1s ease-in-out;
+        }
+       
+        .movie-card:hover {
+            transform: translateY(-4px);
+            transform: scale(1.02);    
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .movie-image img{
+            width: 100%;
+            height: auto;
+        }
+        .movie-info {
+            padding: 8px;
+        }
+        .movie-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 8px 0;
+        }
+        .movie-description {
+            font-size: 14px;
+            color: #666;
+            margin: 0 0 8px 0;
+        }
+        .info {
+            font-size: 12px;
+            color: #888;
+        }
+        .header {
+            background-color: #fff;
+            display: flex;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            
+        
+        }
+        .nav-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-top: 16px;
+            padding: 0 16px;
+        }
+        .nav-scroll {
+            display: flex;
+            gap: 16px;
+
+        }
+        .nav-item {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #333;
+            border-radius: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .nav-item:hover {
+            background-color: #6200ee;
+            color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+
+        }
+        .nav-item.active {
+            background-color: #6200ee;
+            color: #fff;
+        }
+        .nav-item.active:hover {
+            background-color: #3700b3;
+            color: #fff;
+        }
+        /* .nav-item:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(98, 0, 238, 0.5);
+        } */
+        @keyframes cardAnimation {
+            from{
+                opacity: 0;
+                /* THIS means that you are starting from a hidden state */
+                transform: translateY(30px);
+                /* translateY means to move the element vertically */
+            }
+            to{
+                opacity: 1;
+                /* THIS means that you are ending at a visible state */
+                transform: translateY(0px);
+            }
+            
+            
+        }
+        .movie-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        .movie-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .movie-card:nth-child(3) {
+            animation-delay: 0.7s;
+        }
+        .movie-card:nth-child(4) {
+            animation-delay: 1s;
+        }
+        .book-btn {
+            background-color: #090909;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .book-btn:hover {
+            background-color: #6200ee;
+            transform: translateY(-2px);
+        }
+        .booking-btn {
+            background-color: #5fc259;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            animation: bookingAnimation 2s ease-in-out  1 forwards;
+            /* forwards here means the animation will stay in the final state */
+            
+        }
+        @keyframes bookingAnimation {
+            from{
+                opacity: 0;
+                transform: translateX(1700px);
+            }
+            to{
+                opacity: 1;
+                transform: translateX(1300px);
+            }
+            
+        }
+       
+
+
+        
+
+        /* h1 {
+            font-size: 34px;
+            margin: 0 0 16px 0;
+            font-style: italic;
+        } */
+    </style>
+</head>
+<body>
+    <div class="outer-box">
+        <div class ="header">
+            <!-- <h1><b>district</b></h1><b>BY ZOMATO</b> -->
+            <img alt="app-store" src="https://b.zmtcdn.com/data/edition_assets/17466982242413.svg" width="108" class="cursor-pointer" style="filter:invert(1)">
+            <hr style="border: 1px solid #c6c6c6 ; margin: 0 16px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 32 32"><title>location</title><path fill="purple" d="M16 10c0-2.21-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4s4-1.79 4-4m-6 0c0-1.1.9-2 2-2s2 .9 2 2s-.9 2-2 2s-2-.9-2-2"/><path fill="purple" d="M11.42 21.81c.17.12.38.19.58.19s.41-.06.58-.19c.3-.22 7.45-5.37 7.42-11.82c0-4.41-3.59-8-8-8s-8 3.59-8 8c-.03 6.44 7.12 11.6 7.42 11.82M12 4c3.31 0 6 2.69 6 6c.02 4.44-4.39 8.43-6 9.74c-1.61-1.31-6.02-5.29-6-9.74c0-3.31 2.69-6 6-6"/></svg>
+            <a href="https://www.google.com/maps/place/Delhi,+India/@28.6139391,77.2090212,12z/data=!3m1!4b1!4m6!3m5!1s0x390cfd5b347eb62f:0x7d2b6e7e8f9a9c0!8m2!3d28.6139391!4d77.2090212!16zL20vMGNqZ3A?entry=ttu" target="_blank" style="text-decoration: none; color: rgb(18, 18, 18); font-size: 18px; margin-left: 8px;">Delhi</a>
+            <!-- <div style="margin-left: auto;">
+                <a href="https://www.zomato.com/" target="_blank" style="text-decoration: none; color: rgb(18, 18, 18); font-size: 18px; margin-right: 16px;">Zomato</a>
+                <a href="https://www.swiggy.com/" target="_blank" style="text-decoration: none; color: rgb(18, 18, 18); font-size: 18px;">Swiggy</a>
+            </div> -->
+
+            <div class="nav-container">
+                <div class="nav-scroll">
+                    <a href="foryou.html" class="nav-item">For you</a>
+                    <a href="dining.html" class="nav-item">Dining</a>
+                    <a href="movies.html" class="nav-item">Movies</a>
+                    <a href="events.html" class="nav-item">Events</a>
+                    <a href="comedy.html" class="nav-item">Comedy</a>
+                    <a href="stores.html" class="nav-item">Stores</a>
+                    <a href="activities.html" class="nav-item">Activities</a>
+                    <a href="play.html" class="nav-item">play</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="inner-box">
+            <h2>Movie Ticket Booking</h2>
+            <p>Book your tickets for the latest movies now!</p>
+        </div>
+        <button class="booking-btn">✔ Booking Confimed</button>
+    
+    <div class="cards-containers">
+        
+        <div class="movie-card">
+            <div class="movie-image">
+                <img src="https://cdn.district.in/movies-assets/images/cinema/Hanuman-Ansh-3199a900-6975-11f1-a51b-91d242246b61.jpg" alt="Movie Image">
+            </div>
+            <div class="movie-info">
+                <h5 class="movie-title">Hanuman Ansh</h5>
+                <p class="movie-description">A thrilling adventure of Hanuman's journey.</p>
+
+                <span class="info">U | Hindi</span><br></br>
+                <button class="book-btn">Book Now</button>
+            </div>
+        </div>
+         <div class="movie-card">
+            <div class="movie-image">
+                <img src="https://cdn.district.in/movies-assets/images/cinema/_Poster-d0d78f60-961a-11f1-8483-eb84b060bac3.jpg" alt="Movie Image">
+            </div>
+            <div class="movie-info">
+                <h5 class="movie-title">Mirzapur: The Movie</h5>
+                <p class="movie-description">A thrilling adventure of Mirzapur's journey.</p>
+                <span class="info">U | Hindi</span><br></br>
+                <button class="book-btn">Book Now</button>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="movie-image">
+                <img src=https://cdn.district.in/movies-assets/images/cinema/toxiv%3Dc-8340c900-9c6f-11f1-97d4-73a32236137e.jpg alt="Movie Image">
+            </div>
+            <div class="movie-info">
+                <h5 class="movie-title">Toxic : A feary tail for grown-ups</h5>
+                <p class="movie-description">tale of horror</p>
+                <span class="info">A | Hindi and 1 more</span><br></br>
+                <button class="book-btn">Book Now</button>
+            </div>
+        </div>
+       <div class="movie-card">
+            <div class="movie-image">
+                <img src=https://cdn.district.in/movies-assets/images/cinema/AW_Poster-18591030-9548-11f1-b29d-8985d3d6c644.jpg alt="Movie Image">
+            </div>
+            <div class="movie-info">
+                <h5 class="movie-title">Avarapan 2</h5>
+                <p class="movie-description">A thrilling adventure of Avarapan's journey.</p>
+                <span class="info">U | Hindi </span><Br></Br>
+                <button class="book-btn">Book Now</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
